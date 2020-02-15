@@ -5,14 +5,8 @@
  */
 package meatburrito2020;
 
-import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
-import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
-import org.deeplearning4j.nn.conf.layers.DenseLayer;
-import org.deeplearning4j.nn.conf.layers.OutputLayer;
-import org.deeplearning4j.nn.weights.WeightInit;
-import org.nd4j.linalg.activations.Activation;
-import org.nd4j.linalg.learning.config.AdaGrad;
-import org.nd4j.linalg.lossfunctions.LossFunctions;
+import config.AlgoConfig;
+import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
 /**
  *
@@ -25,23 +19,11 @@ public class MeatBurrito2020 {
      */
     public static void main(String[] args) {
 
-        MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
-                .seed(12345)
-                .weightInit(WeightInit.XAVIER)
-                .updater(new AdaGrad(0.05))
-                .activation(Activation.RELU)
-                .l2(0.0001)
-                .list()
-                .layer(new DenseLayer.Builder().nIn(784).nOut(250)
-                        .build())
-                .layer(new DenseLayer.Builder().nIn(250).nOut(10)
-                        .build())
-                .layer(new DenseLayer.Builder().nIn(10).nOut(250)
-                        .build())
-                .layer(new OutputLayer.Builder().nIn(250).nOut(784)
-                        .lossFunction(LossFunctions.LossFunction.MSE)
-                        .build())
-                .build();
+
+        MultiLayerNetwork net = new MultiLayerNetwork(AlgoConfig.get(new char[]{'a','b','c'}, 50));
+        net.init();//acctualy creats network
+
+        System.out.println("end");
 
     }
 
