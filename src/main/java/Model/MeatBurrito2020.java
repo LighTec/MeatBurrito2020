@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package meatburrito2020;
+package Model;
 
-import config.AlgoConfig;
+import Config.AlgoConfig;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
 /**
