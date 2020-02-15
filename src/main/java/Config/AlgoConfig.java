@@ -1,4 +1,4 @@
-package config;
+package Config;
 
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.BackpropType;
