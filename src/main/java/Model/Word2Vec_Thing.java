@@ -14,7 +14,7 @@ public class Word2Vec_Thing {
 
     }
 
-    public Word2Vec returnModel(){
-
-    }
+//    public Word2Vec returnModel(){
+//
+ //   }
 }
