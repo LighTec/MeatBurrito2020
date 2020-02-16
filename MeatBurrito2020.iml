@@ -24,6 +24,8 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.8" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:linux:11" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:linux:11" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.8" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.8" level="project" />
     <orderEntry type="library" name="Maven: org.nd4j:nd4j-native-platform:1.0.0-beta6" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:openblas-platform:0.3.7-1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:openblas:0.3.7-1.5.2" level="project" />

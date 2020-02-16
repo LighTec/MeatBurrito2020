@@ -9,6 +9,19 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class TwitterResources {
+
+    public static void postTweet(String tweet) throws TwitterException {
+        ConfigurationBuilder config = new ConfigurationBuilder();
+        config.setOAuthConsumerKey();
+        config.setOAuthConsumerSecret();
+        config.setOAuthAccessToken();
+        config.setOAuthAccessTokenSecret();
+
+        TwitterFactor factory = new TwitterFactory(config.build());
+        Twitter twitter = factory.getInstance();
+        twitter.updateStatus(tweet);
+    }
+
     public static void getAnalysisTweets(String source, String outputFile) throws TwitterException, IOException {
         ConfigurationBuilder config = new ConfigurationBuilder();
         config.setOAuthConsumerKey("MNxOKZ379XgXBOEZxaiL40mlU");
