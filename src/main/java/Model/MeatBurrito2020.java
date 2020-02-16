@@ -7,8 +7,9 @@ package Model;
 
 import Config.AlgoConfig;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-//import View.Gui;
+
 import java.util.Scanner;
+import View.Gui;
 
 /**
  *
@@ -29,8 +30,8 @@ public class MeatBurrito2020 {
         test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
         test.Train(3);
 
-       // Gui gui = new Gui();
-      //  gui.launch(new String[0]);
+        Gui gui = new Gui();
+        gui.launch();
 
         while(true){
             Scanner keyboard = new Scanner(System.in);
