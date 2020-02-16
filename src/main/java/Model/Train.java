@@ -17,8 +17,15 @@ public class  Train {
             INDArray inputLabels = Nd4j.zeros(1, validWord.length, perEpoch);//another oneD array that holds an offset version of the last to be used as output while training
             for (int j = 0 +(epoch * perEpoch) ; j < ((epoch + 1) * perEpoch) -1 ; j++) {
                 inputArray.putScalar(new int[]{0, sizedTFile[j], j}, 1);
-                for(int i = 0; i < simmilaratyMatrix[j].length - 2 ; i++){
-                   inputLabels.putScalar(new int[]{0,i,j},simmilaratyMatrix[j+1][i]);
+                for(int i = 0; i < simmilaratyMatrix[j].length - 1 ; i++){
+                    try {
+                        inputLabels.putScalar(new int[]{0, i, j}, simmilaratyMatrix[j + 1][i]);
+                    }catch (ArrayIndexOutOfBoundsException e){
+                        System.err.println("Somehow j or i got fucked up.");
+                        System.err.println("Value of i: " + i);
+                        System.err.println("Value of j: " + j);
+                        inputLabels.putScalar(new int[]{0, i, j}, simmilaratyMatrix[j][i-1]); //fallback code
+                    }
                 }
                 //inputLabels.putRow(j,Nd4j.create(simmilaratyMatrix[j+1]) );
                 //inputLabels.putScalar(new int[]{0, sizedTFile[j+1], j}, 1);
