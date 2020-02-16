@@ -31,6 +31,8 @@ public class MeatBurrito2020{
         Gui gui = new Gui();
         gui.init(args);
 
+        TwitterResources.getTweets("", "");
+
         Word2Vec_Thing test = new Word2Vec_Thing();
         test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
         test.Train(3);
