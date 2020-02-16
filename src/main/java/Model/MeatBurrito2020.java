@@ -6,7 +6,6 @@
 package Model;
 
 import View.Gui;
-import twitter4j.TwitterException;
 
 import java.io.File;
 
@@ -43,6 +42,11 @@ public class MeatBurrito2020{
 
         String[] inputFiles = {in1.getAbsolutePath()};
         double[][] vals = proc.relatedWords(inputFiles, 5, 1);
+
+        //MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 50));
+       // net.init();//actually creates network
+       // File networkSave
+
         /*
         for(int i = 0; i < vals.length; i++){
             for(int j = 0; j < vals.length; j++){

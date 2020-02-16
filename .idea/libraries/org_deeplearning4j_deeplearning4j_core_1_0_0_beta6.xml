@@ -82,9 +82,9 @@
       <root url="jar://$PROJECT_DIR$/lib/leptonica-1.78.0-1.5.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/tesseract-4.1.0-1.5.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javafx-graphics-11.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javafx-graphics-11-linux.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javafx-graphics-11-win.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javafx-base-11.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javafx-base-11-linux.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javafx-base-11-win.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/opencv-platform-4.1.2-1.5.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/openblas-platform-0.3.7-1.5.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/openblas-0.3.7-1.5.2-android-arm.jar!/" />
