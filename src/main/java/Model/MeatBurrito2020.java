@@ -9,6 +9,9 @@ import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Iterator;
 
 /**
  *
@@ -42,13 +45,34 @@ public class MeatBurrito2020{
         File in1 = new File("src/main/java/Data/newTweets.txt");
 
         String[] inputFiles = {in1.getAbsolutePath()};
-        double[][] vals = proc.relatedWords(inputFiles, 5, 1);
-
+        double[][] vals = proc.relatedWords(inputFiles, 1);
+/*
+        String[] cip = proc.cipher();
+        try {
+            String data = new String(Files.readAllBytes(Paths.get("src/main/java/Data/newTweets.txt")));
+            String[] matcher = data.replaceAll("[^a-zA-Z.@ ]", "").toLowerCase().split("\\s+");
+            for(int i = 0; i < cip.length; i++){
+                int cnt = 0;
+                for(int k = 0; k < matcher.length; k++){
+                    if(matcher[k].equals(cip[i])){
+                        cnt++;
+                    }
+                }
+                System.out.println(cip[i] + " found " + cnt + " times.");
+                if(cnt < 10){
+                    System.out.println("^^^^^^^Found less than 10 times!!!");
+                }
+            }
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+*/
         MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 25));
         net.init();//actually creates network
         File networkSave = new File("src/main/java/Data/newTweets.txt");
         try {
-            networkSave = Train.train(net,networkSave,500, proc.getmapping(inputFiles), proc.cipher(),vals);
+            networkSave = Train.train(net,networkSave,50000, proc.getmapping(inputFiles), proc.cipher(),vals);
         } catch (IOException e) {
             e.printStackTrace();
         }

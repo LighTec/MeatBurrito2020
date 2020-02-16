@@ -30,10 +30,12 @@ public class  Train {
 
             String output = "";
 
-            INDArray testInputArray = Nd4j.zeros(validWord.length);
+
+            INDArray testInputArray = Nd4j.zeros(1, validWord.length,1);
             int fistChar = (int) (validWord.length * Math.random());
             testInputArray.putScalar(fistChar, 1);//creats a random vector based on validKey characters
 
+            networkConfig.rnnClearPreviousState();
 
             for (int k = 0; k < 50; k++) {
 
