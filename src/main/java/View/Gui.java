@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -14,6 +15,8 @@ import twitter4j.TwitterException;
 import java.io.IOException;
 
 public class Gui extends Application {
+
+    private static String nameString = "literallyDTrump", outputFileNameString = "TestFile.txt";
 
     public void init(String[] args){
         launch(args);
@@ -32,14 +35,38 @@ public class Gui extends Application {
         Group x = new Group();
 
         TextField name = new TextField("literallyDTrump");
+        name.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                Gui.nameString = name.getText();
+            }
+        });
         name.setLayoutX(0);
         name.setLayoutY(0);
         x.getChildren().add(name);
 
+        TextField nameLabel = new TextField("<---- User Name");
+        nameLabel.setLayoutX(200);
+        nameLabel.setLayoutY(0);
+        nameLabel.setEditable(false);
+        x.getChildren().add(nameLabel);
+
         TextField outputFileName = new TextField("TestFile.txt");
+        outputFileName.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                Gui.outputFileNameString = outputFileName.getText();
+            }
+        });
         outputFileName.setLayoutX(0);
         outputFileName.setLayoutY(25);
         x.getChildren().add(outputFileName);
+
+        TextField outputFileNameLabel = new TextField("<------ Output File Name");
+        outputFileNameLabel.setLayoutX(200);
+        outputFileNameLabel.setLayoutY(25);
+        outputFileNameLabel.setEditable(false);
+        x.getChildren().add(outputFileNameLabel);
 
         TextArea outputArea = new TextArea("");
         outputArea.setLayoutX(0);
@@ -50,7 +77,7 @@ public class Gui extends Application {
         Button submitButton = new Button("Submit");
         submitButton.setLayoutX(0);
         submitButton.setLayoutY(50);
-        submitButton.setOnMouseClicked(new SubmitButtonClick(name, outputFileName, outputArea));
+        submitButton.setOnMouseClicked(new SubmitButtonClick(outputArea));
         x.getChildren().add(submitButton);
 
         return x;
@@ -58,17 +85,14 @@ public class Gui extends Application {
 
     private class SubmitButtonClick implements EventHandler<MouseEvent> {
         TextArea outputField;
-        String name;
-        String outputFileName;
-        private SubmitButtonClick(TextField name, TextField outputFileName, TextArea outputField) {
+        private SubmitButtonClick(TextArea outputField) {
             this.outputField = outputField;
-            this.name = name.getText();
-            this.outputFileName = outputFileName.getText();
         }
         @Override
         public void handle(MouseEvent event) {
             try {
-                TwitterResources.getAnalysisTweets(name, outputFileName, outputField);
+                System.out.println("Hello World!\n");
+                TwitterResources.getAnalysisTweets("@" + Gui.nameString, Gui.outputFileNameString, outputField);
             } catch (TwitterException e) {
                 e.printStackTrace();
             } catch (IOException e) {

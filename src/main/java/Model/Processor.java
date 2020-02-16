@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class Processor {
+public class Processor{
 
     private Word2Vec_Thing vect;
 
