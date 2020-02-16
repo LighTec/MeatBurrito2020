@@ -43,8 +43,6 @@ public class Word2Vec_Thing {
                 .build();
 
         System.out.println("Word2Vec created.");
-
-
     }
 
     public void Train(int count){

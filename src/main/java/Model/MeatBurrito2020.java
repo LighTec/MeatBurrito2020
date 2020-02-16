@@ -23,7 +23,7 @@ public class MeatBurrito2020 {
 
 
         //MultiLayerNetwork net = new MultiLayerNetwork(AlgoConfig.get(new char[]{'a','b','c'}, 50));
-        //net.init();//acctualy creats network
+        //net.init();//actually creates network
 
         Word2Vec_Thing test = new Word2Vec_Thing();
         test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/trumpsTweets.txt");
