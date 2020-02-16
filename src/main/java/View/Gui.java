@@ -45,6 +45,12 @@ public class Gui extends Application {
         name.setLayoutY(0);
         x.getChildren().add(name);
 
+        TextField nameLabel = new TextField("<---- User Name");
+        nameLabel.setLayoutX(200);
+        nameLabel.setLayoutY(0);
+        nameLabel.setEditable(false);
+        x.getChildren().add(nameLabel);
+
         TextField outputFileName = new TextField("TestFile.txt");
         outputFileName.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
@@ -56,18 +62,22 @@ public class Gui extends Application {
         outputFileName.setLayoutY(25);
         x.getChildren().add(outputFileName);
 
+        TextField outputFileNameLabel = new TextField("<------ Output File Name");
+        outputFileNameLabel.setLayoutX(200);
+        outputFileNameLabel.setLayoutY(25);
+        outputFileNameLabel.setEditable(false);
+        x.getChildren().add(outputFileNameLabel);
+
         TextArea outputArea = new TextArea("");
         outputArea.setLayoutX(0);
         outputArea.setLayoutY(75);
         outputArea.setPrefRowCount(10);
         x.getChildren().add(outputArea);
 
-        System.out.println("Hello World! \n");
-
         Button submitButton = new Button("Submit");
         submitButton.setLayoutX(0);
         submitButton.setLayoutY(50);
-        submitButton.setOnMouseClicked(new SubmitButtonClick((TextArea)x.getChildren().get(2)));
+        submitButton.setOnMouseClicked(new SubmitButtonClick(outputArea));
         x.getChildren().add(submitButton);
 
         return x;
