@@ -9,6 +9,7 @@ import Config.AlgoConfig;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
 import java.util.Scanner;
+import View.Gui;
 
 /**
  *
@@ -28,6 +29,9 @@ public class MeatBurrito2020 {
         Word2Vec_Thing test = new Word2Vec_Thing();
         test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/trumpsTweets.txt");
         test.Train(3);
+
+        Gui gui = new Gui();
+        gui.launch();
 
         while(true){
             Scanner keyboard = new Scanner(System.in);
