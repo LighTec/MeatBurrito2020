@@ -25,6 +25,7 @@ public class  Train {
             }
 
             DataSet dataSet = new DataSet(inputArray, inputLabels);
+            System.out.println("Fitting data with second neural network");
             networkConfig.fit(dataSet);
 
             String output = "";
