@@ -27,7 +27,7 @@ public class Word2Vec_Thing {
         SentenceIterator iter = new LineSentenceIterator(new File(filepath));
         iter.setPreProcessor(new SentencePreProcessor() {
             public String preProcess(String sentence) {
-                return sentence.replaceAll("[^a-zA-Z. ]", "").toLowerCase();
+                return sentence.replaceAll("[^a-zA-Z.@ ]", "").toLowerCase();
             }
         });
 
