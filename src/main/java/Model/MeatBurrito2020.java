@@ -26,8 +26,8 @@ public class MeatBurrito2020{
         //MultiLayerNetwork net = new MultiLayerNetwork(AlgoConfig.get(new char[]{'a','b','c'}, 50));
         //net.init();//actually creates network
 
-        Gui gui = new Gui();
-        gui.init(args);
+       // Gui gui = new Gui();
+       // gui.init(args);
 
         /*
         try {

@@ -36,7 +36,7 @@ public class Word2Vec_Thing {
         t.setTokenPreProcessor(new CommonPreprocessor());
 
         this.thesaurus = new Word2Vec.Builder()
-                .minWordFrequency(5)
+                .minWordFrequency(1)
                 .layerSize(500)
                 .seed(42)
                 .windowSize(5)
@@ -49,9 +49,9 @@ public class Word2Vec_Thing {
 
     public void Train(int count){
         for(int i = 0; i < count; i++){
-            System.out.println("Training thesaurus");
+            System.out.println("Training word-vector neural network");
             this.thesaurus.fit();
-            System.out.println("Thesaurus trained.");
+            System.out.println("Word-vector neural network trained.");
         }
     }
 
