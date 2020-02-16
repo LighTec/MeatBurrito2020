@@ -94,4 +94,8 @@ public class Processor {
             System.out.println(related);
         }
     }
+
+    public String[] cipher(int index){
+        return (String[])this.vect.vocab().words().toArray();
+    }
 }
