@@ -35,7 +35,7 @@ public class  Train {
             testInputArray.putScalar(fistChar, 1);//creats a random vector based on validKey characters
 
 
-            for (int k = 0; k < 2000; k++) {
+            for (int k = 0; k < 50; k++) {
 
                 INDArray outputArray = networkConfig.rnnTimeStep(testInputArray);
 
@@ -47,12 +47,12 @@ public class  Train {
                         maxPredictionIndex = h;
                     }
                 }
-                output = output + validWord[maxPredictionIndex];
+                output = output + " " + validWord[maxPredictionIndex];
                 testInputArray = Nd4j.zeros(validWord.length);
                 testInputArray.putScalar(maxPredictionIndex, 1);
 
             }
-            System.out.println((char) fistChar + output);
+            System.out.println( fistChar + " " + output);
 
         }
 

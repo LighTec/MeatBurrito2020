@@ -5,7 +5,6 @@
  */
 package Model;
 
-import View.Gui;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
 import java.io.File;
@@ -49,7 +48,7 @@ public class MeatBurrito2020{
         net.init();//actually creates network
         File networkSave = new File("src/main/java/Data/newTweets.txt");
         try {
-            networkSave = Train.train(net,networkSave,50, proc.getmapping(inputFiles), proc.cipher(),vals);
+            networkSave = Train.train(net,networkSave,500, proc.getmapping(inputFiles), proc.cipher(),vals);
         } catch (IOException e) {
             e.printStackTrace();
         }
