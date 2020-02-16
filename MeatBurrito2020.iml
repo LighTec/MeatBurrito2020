@@ -19,11 +19,11 @@
     <orderEntry type="library" name="org.deeplearning4j:deeplearning4j-core:1.0.0-beta6" level="project" />
     <orderEntry type="library" name="org.nd4j:nd4j-native-platform:1.0.0-beta6" level="project" />
     <orderEntry type="library" name="org.datavec:datavec-api:1.0.0-beta6" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.21" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.8" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.8" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:linux:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:linux:11" level="project" />
     <orderEntry type="library" name="Maven: org.nd4j:nd4j-native-platform:1.0.0-beta6" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:openblas-platform:0.3.7-1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:openblas:0.3.7-1.5.2" level="project" />
@@ -139,9 +139,9 @@
     <orderEntry type="library" name="Maven: org.bytedeco:leptonica:1.78.0-1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:tesseract:4.1.0-1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:linux:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:linux:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:opencv-platform:4.1.2-1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:opencv:android-arm:4.1.2-1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.bytedeco:opencv:android-arm64:4.1.2-1.5.2" level="project" />

@@ -33,10 +33,13 @@ public class  Train {
             int fistChar = (int) (validWord.length * Math.random());
             testInputArray.putScalar(fistChar, 1);//creats a random vector based on validKey characters
 
-
+            networkConfig.rnnClearPreviousState();
+            INDArray outputArray  = networkConfig.rnnTimeStep(testInputArray);
+            //outputArray = outputArray.tensorAlongDimension((int)outputArray.size(2)-1,1,0);
+            System.out.println("reeched the yeet");
             for (int k = 0; k < 50; k++) {
 
-                INDArray outputArray = networkConfig.rnnTimeStep(testInputArray);
+                 //outputArray = networkConfig.rnnTimeStep(testInputArray);
 
                 double maxPrediction = Double.MIN_VALUE;
                 int maxPredictionIndex = -1;
@@ -49,9 +52,9 @@ public class  Train {
                 output = output + " " + validWord[maxPredictionIndex];
                 testInputArray = Nd4j.zeros(validWord.length);
                 testInputArray.putScalar(maxPredictionIndex, 1);
-
+                outputArray = networkConfig.rnnTimeStep(testInputArray);
             }
-            System.out.println( fistChar + " " + output);
+            System.out.println( validWord[fistChar] + " " + output);
 
         }
 
