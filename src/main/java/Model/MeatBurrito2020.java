@@ -31,7 +31,7 @@ public class MeatBurrito2020 {
         test.Train(3);
 
         Gui gui = new Gui();
-        gui.launch();
+        gui.launch(new String[0]);
 
         while(true){
             Scanner keyboard = new Scanner(System.in);
