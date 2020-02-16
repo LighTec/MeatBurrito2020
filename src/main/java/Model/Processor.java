@@ -63,8 +63,7 @@ public class Processor{
         }
     }
 
-    public double[][] relatedWords(String[] inputFiles, int relatedCount, int trainCount){
-        double val = 1 / (double)relatedCount;
+    public double[][] relatedWords(String[] inputFiles, int trainCount){
         this.vect = new Word2Vec_Thing();
         this.vect.BuildModel(inputFiles[0]); // TODO allow multiple inputs
         this.vect.Train(trainCount);

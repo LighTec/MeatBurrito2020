@@ -36,7 +36,7 @@ public class Word2Vec_Thing {
         t.setTokenPreProcessor(new CommonPreprocessor());
 
         this.thesaurus = new Word2Vec.Builder()
-                .minWordFrequency(1)
+                .minWordFrequency(10)
                 .layerSize(500)
                 .seed(42)
                 .windowSize(5)
