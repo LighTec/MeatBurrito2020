@@ -8,6 +8,8 @@ package Model;
 import View.Gui;
 import twitter4j.TwitterException;
 
+import java.io.File;
+
 /**
  *
  * @author kell
@@ -35,9 +37,11 @@ public class MeatBurrito2020{
         */
 
         Processor proc = new Processor();
-        proc.test();
+        //proc.test();
 
-        String[] inputFiles = {"/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt"};
+        File in1 = new File("src/main/java/Data/newTweets.txt");
+
+        String[] inputFiles = {in1.getAbsolutePath()};
         double[][] vals = proc.relatedWords(inputFiles, 5, 1);
         /*
         for(int i = 0; i < vals.length; i++){
