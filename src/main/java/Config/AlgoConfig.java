@@ -12,7 +12,7 @@ import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 public class AlgoConfig {
-    public static MultiLayerConfiguration get(char[] validKeyChars,int tBPTTLength){
+    public static MultiLayerConfiguration get(String[] validKeyChars,int tBPTTLength){
 
 
          MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()//the network configuration

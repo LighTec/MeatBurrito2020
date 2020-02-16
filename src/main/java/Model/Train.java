@@ -53,6 +53,6 @@ public class  Train {
         }
 
         networkConfig.save(networkFile);
-        return null;
+        return networkFile;
     }
 }
