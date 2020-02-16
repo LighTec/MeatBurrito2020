@@ -46,28 +46,7 @@ public class MeatBurrito2020{
 
         String[] inputFiles = {in1.getAbsolutePath()};
         double[][] vals = proc.relatedWords(inputFiles, 1);
-/*
-        String[] cip = proc.cipher();
-        try {
-            String data = new String(Files.readAllBytes(Paths.get("src/main/java/Data/newTweets.txt")));
-            String[] matcher = data.replaceAll("[^a-zA-Z.@ ]", "").toLowerCase().split("\\s+");
-            for(int i = 0; i < cip.length; i++){
-                int cnt = 0;
-                for(int k = 0; k < matcher.length; k++){
-                    if(matcher[k].equals(cip[i])){
-                        cnt++;
-                    }
-                }
-                System.out.println(cip[i] + " found " + cnt + " times.");
-                if(cnt < 10){
-                    System.out.println("^^^^^^^Found less than 10 times!!!");
-                }
-            }
-            System.exit(0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
+
         MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 25));
         net.init();//actually creates network
         File networkSave = new File("src/main/java/Data/newTweets.txt");
