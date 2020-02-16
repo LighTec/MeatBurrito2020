@@ -44,13 +44,13 @@ public class MeatBurrito2020{
         File in1 = new File("src/main/java/Data/newTweets.txt");
 
         String[] inputFiles = {in1.getAbsolutePath()};
-        double[][] vals = proc.relatedWords(inputFiles,  1);
+        double[][] vals = proc.relatedWords(inputFiles,  3);
 
-        MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 3));
+        MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 10));
         net.init();//actually creates network
         File networkSave = new File("src/main/java/Data/newTweets.txt");
         try {
-            networkSave = Train.train(net,networkSave,1000, proc.getmapping(inputFiles), proc.cipher(),vals);
+            networkSave = Train.train(net, networkSave,1000, proc.getmapping(inputFiles), proc.cipher(), vals);
         } catch (IOException e) {
             e.printStackTrace();
         }
