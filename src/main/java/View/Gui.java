@@ -17,6 +17,7 @@ import java.io.IOException;
 public class Gui extends Application {
 
     private static String nameString = "literallyDTrump", outputFileNameString = "TestFile.txt";
+    public TextArea result = new TextArea("");
 
     public void init(String[] args){
         launch(args);
@@ -41,12 +42,12 @@ public class Gui extends Application {
                 Gui.nameString = name.getText();
             }
         });
-        name.setLayoutX(0);
+        name.setLayoutX(200);
         name.setLayoutY(0);
         x.getChildren().add(name);
 
-        TextField nameLabel = new TextField("<---- User Name");
-        nameLabel.setLayoutX(200);
+        TextField nameLabel = new TextField("User Name:");
+        nameLabel.setLayoutX(0);
         nameLabel.setLayoutY(0);
         nameLabel.setEditable(false);
         x.getChildren().add(nameLabel);
@@ -58,12 +59,12 @@ public class Gui extends Application {
                 Gui.outputFileNameString = outputFileName.getText();
             }
         });
-        outputFileName.setLayoutX(0);
+        outputFileName.setLayoutX(200);
         outputFileName.setLayoutY(25);
         x.getChildren().add(outputFileName);
 
-        TextField outputFileNameLabel = new TextField("<------ Output File Name");
-        outputFileNameLabel.setLayoutX(200);
+        TextField outputFileNameLabel = new TextField("Output File Name:");
+        outputFileNameLabel.setLayoutX(0);
         outputFileNameLabel.setLayoutY(25);
         outputFileNameLabel.setEditable(false);
         x.getChildren().add(outputFileNameLabel);
@@ -79,6 +80,11 @@ public class Gui extends Application {
         submitButton.setLayoutY(50);
         submitButton.setOnMouseClicked(new SubmitButtonClick(outputArea));
         x.getChildren().add(submitButton);
+
+        this.result.setLayoutX(300);
+        this.result.setLayoutY(0);
+        this.result.setPrefRowCount(15);
+        x.getChildren().add(this.result);
 
         return x;
     }
