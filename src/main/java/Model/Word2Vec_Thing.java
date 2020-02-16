@@ -1,7 +1,8 @@
 package Model;
 
-import org.deeplearning4j.models.embeddings.learning.impl.elements.CBOW;
+import org.deeplearning4j.models.word2vec.VocabWord;
 import org.deeplearning4j.models.word2vec.Word2Vec;
+import org.deeplearning4j.models.word2vec.wordstore.VocabCache;
 import org.deeplearning4j.text.sentenceiterator.LineSentenceIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
 import org.deeplearning4j.text.sentenceiterator.SentencePreProcessor;
@@ -39,14 +40,11 @@ public class Word2Vec_Thing {
                 .layerSize(500)
                 .seed(42)
                 .windowSize(5)
-                .elementsLearningAlgorithm(new CBOW<>())
                 .iterate(iter)
                 .tokenizerFactory(t)
                 .build();
 
         System.out.println("Word2Vec created.");
-
-
     }
 
     public void Train(int count){
@@ -61,7 +59,19 @@ public class Word2Vec_Thing {
         return this.thesaurus.wordsNearest(in,count);
     }
 
-//    public Word2Vec returnModel(){
-//
-//    }
+    public Word2Vec returnModel(){
+    return this.thesaurus;
+    }
+
+    public long vocabSize(){
+        return this.thesaurus.vocabSize();
+    }
+
+    public VocabCache<VocabWord> vocab(){
+        return this.thesaurus.getVocab();
+    }
+
+    public double[] getVector(String word){
+        return this.thesaurus.getWordVector(word);
+    }
 }

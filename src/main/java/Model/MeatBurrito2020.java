@@ -8,7 +8,7 @@ package Model;
 import View.Gui;
 import twitter4j.TwitterException;
 
-import java.util.Scanner;
+import java.io.File;
 
 /**
  *
@@ -28,24 +28,33 @@ public class MeatBurrito2020{
         Gui gui = new Gui();
         gui.init(args);
 
+        /*
         try {
             TwitterResources.getTweets("", "");
         } catch (TwitterException e) {
             e.printStackTrace();
         }
+        */
 
-        Word2Vec_Thing test = new Word2Vec_Thing();
-        test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
-        test.Train(3);
+        Processor proc = new Processor();
+        //proc.test();
 
-        while(true){
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println(test.getWordsNearest(keyboard.nextLine(),5));
+        File in1 = new File("src/main/java/Data/newTweets.txt");
+
+        String[] inputFiles = {in1.getAbsolutePath()};
+        double[][] vals = proc.relatedWords(inputFiles, 5, 1);
+        /*
+        for(int i = 0; i < vals.length; i++){
+            for(int j = 0; j < vals.length; j++){
+                if(vals[i][j] > 0.1){
+                    System.out.println("1/5 for line " + i + " is at column " + j);
+                }
+            }
         }
+        */
+        //proc.printBestWords();
 
-
-
-      //  System.out.println("end");
+      System.out.println("end");
 
     }
 }
