@@ -28,7 +28,7 @@ public class  Train {
             networkConfig.fit(dataSet);
 
             String output = "";
-            
+
             networkConfig.rnnClearPreviousState();
             INDArray testInputArray = Nd4j.zeros(1, validWord.length, 1);
             int fistChar = (int) (validWord.length * Math.random());
