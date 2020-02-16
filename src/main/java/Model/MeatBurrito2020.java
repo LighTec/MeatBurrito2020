@@ -29,7 +29,7 @@ public class MeatBurrito2020{
         //net.init();//actually creates network
 
         Gui gui = new Gui();
-        gui.launch(args);
+        gui.init(args);
 
         Word2Vec_Thing test = new Word2Vec_Thing();
         test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
