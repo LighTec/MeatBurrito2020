@@ -7,7 +7,7 @@ package Model;
 
 import Config.AlgoConfig;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-import View.Gui;
+//import View.Gui;
 import java.util.Scanner;
 
 /**
@@ -26,11 +26,11 @@ public class MeatBurrito2020 {
         //net.init();//actually creates network
 
         Word2Vec_Thing test = new Word2Vec_Thing();
-        test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/trumpsTweets.txt");
+        test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
         test.Train(3);
 
-        Gui gui = new Gui();
-        gui.launch(new String[0]);
+       // Gui gui = new Gui();
+      //  gui.launch(new String[0]);
 
         while(true){
             Scanner keyboard = new Scanner(System.in);
