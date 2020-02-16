@@ -20,11 +20,10 @@ public class AlgoConfig {
                 //.iterations(1)
                 //.learningRate(0.001)
                 .seed(12345)
-               //.regularization(true)
                 .l2(0.001)
                 .weightInit(WeightInit.XAVIER)
                 .updater(Updater.NESTEROVS)
-                //.momentum(0.9)
+               // .momentum(0.9)
                 .list()//For configuring MultiLayerNetwork we call the list method
                 .layer(0, new LSTM.Builder().nIn(validKeyChars.length).nOut(validKeyChars.length).activation(Activation.TANH).build())
                 .layer(1, new RnnOutputLayer.Builder(LossFunctions.LossFunction.MCXENT).nIn(validKeyChars.length).nOut(validKeyChars.length).activation(Activation.SOFTMAX).build())
