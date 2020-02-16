@@ -16,6 +16,8 @@ public abstract class TwitterResources {
         config.setOAuthAccessToken("1228793132285739008-WpVQihekNNTut7FgWOzVWcaPMxWE2w");
         config.setOAuthAccessTokenSecret("AIUQLTGeSPmGBKvESWkrUU7bHH7Q84Bk1XjM4WPsv93m2");
 
+        System.out.println(source + '\n' + outputFile + '\n');
+
         TwitterFactory factory = new TwitterFactory(config.build());
         Twitter twitter = factory.getInstance();
 
