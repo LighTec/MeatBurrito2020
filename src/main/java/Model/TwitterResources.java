@@ -21,7 +21,6 @@ public abstract class TwitterResources {
 
         FileWriter output = new FileWriter(outputFile);
         Query search = new Query("from:" + source);
-        search.setSince("1999-03-03");
         search.count(100);
         QueryResult tweets = twitter.search(search);
         for(int i = 0; i < tweets.getTweets().size(); i++) {
