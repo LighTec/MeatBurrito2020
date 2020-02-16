@@ -3,9 +3,18 @@ package Model;
 import org.deeplearning4j.models.word2vec.VocabWord;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.models.word2vec.wordstore.VocabCache;
+import org.deeplearning4j.text.sentenceiterator.LineSentenceIterator;
+import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
+import org.deeplearning4j.text.sentenceiterator.SentencePreProcessor;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Processor {
 
@@ -97,5 +106,45 @@ public class Processor {
 
     public String[] cipher(){
         return (String[])this.vect.vocab().words().toArray();
+    }
+
+    public int[] getmapping(String[] inputfilepaths){
+        int[][] rawmappings = new int[inputfilepaths.length][];
+        for(int i = 0; i < inputfilepaths.length; i++){
+            File fl = new File(inputfilepaths[i]);
+            try {
+                String data = new String(Files.readAllBytes(Paths.get(inputfilepaths[i])));
+                String[] words = data.replaceAll("[^a-zA-Z.@ ]", "").toLowerCase().split("\\s+");
+                int[] mappings = new int[words.length];
+                VocabCache<VocabWord> vocab = this.vect.vocab();
+                for(int k = 0; k < mappings.length; k++){
+                    mappings[k] = vocab.indexOf(words[k]);
+                }
+                rawmappings[i] = mappings;
+            } catch (IOException e) {
+                e.printStackTrace();
+                break;
+            }
+
+        }
+        return jaggedMatrixToArray(rawmappings);
+    }
+
+    public int[] jaggedMatrixToArray(int[][] matrix){
+        int tot = 0;
+        for(int i = 0; i < matrix.length; i++){
+            tot += matrix[i].length;
+        }
+        int[] out = new int[tot];
+        for(int i = 0; i < matrix.length; i++){
+            int index = 0;
+            for(int j = 0; j < i; j++){
+                index += matrix[j].length;
+            }
+            for(int j = 0; j < matrix[i].length; j++){
+                out[index+j] = matrix[i][j];
+            }
+        }
+        return out;
     }
 }

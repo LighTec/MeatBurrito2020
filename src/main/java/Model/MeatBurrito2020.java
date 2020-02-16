@@ -35,8 +35,8 @@ public class MeatBurrito2020{
             e.printStackTrace();
         }
         */
-
         Processor proc = new Processor();
+
         //proc.test();
 
         File in1 = new File("src/main/java/Data/newTweets.txt");
