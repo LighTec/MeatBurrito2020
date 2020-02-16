@@ -1,6 +1,7 @@
 package Model;
 
 import org.deeplearning4j.models.word2vec.VocabWord;
+import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.models.word2vec.wordstore.VocabCache;
 
 import java.util.Collection;
@@ -29,6 +30,28 @@ public class Processor {
         this.vect = new Word2Vec_Thing();
         this.vect.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
         this.vect.Train(1);
+        int wordCount = (int)this.vect.vocabSize();
+        VocabCache<VocabWord> words = this.vect.vocab();
+        double[][] indices = new double[wordCount][wordCount];
+        int j;
+        Word2Vec temp = this.vect.returnModel();
+        for(int i = 0; i < wordCount; i++){
+            String word = words.wordAtIndex(i);
+            double[] vals = temp.getWordVector(word);
+            double sum = 0;
+            for(int k = 0; k < vals.length; k++){
+                if(vals[k] < 0){
+                    vals[k] = 0;
+                }
+                sum += vals[k];
+            }
+            double newsum = 0;
+            for(int k = 0; k < vals.length; k++){
+                vals[k] = vals[k] / sum;
+                newsum += vals[k];
+            }
+            indices[i] = vals;
+        }
     }
 
     public double[][] relatedWords(String[] inputFiles, int relatedCount, int trainCount){
@@ -40,15 +63,23 @@ public class Processor {
         VocabCache<VocabWord> words = this.vect.vocab();
         double[][] indices = new double[wordCount][wordCount];
         int j;
+        Word2Vec temp = this.vect.returnModel();
         for(int i = 0; i < wordCount; i++){
             String word = words.wordAtIndex(i);
-            Collection related = this.vect.getWordsNearest(word,relatedCount);
-            Iterator iter = related.iterator();
-            while(iter.hasNext()){
-                j = words.indexOf((String)iter.next());
-                indices[i][j] = val;
-                //System.out.println(i + " " + j);
+            double[] vals = temp.getWordVector(word);
+            double sum = 0;
+            for(int k = 0; k < vals.length; k++){
+                if(vals[k] < 0){
+                    vals[k] = 0;
+                }
+                sum += vals[k];
             }
+            double newsum = 0;
+            for(int k = 0; k < vals.length; k++){
+                vals[k] = vals[k] / sum;
+                newsum += vals[k];
+            }
+            indices[i] = vals;
         }
         return indices;
     }

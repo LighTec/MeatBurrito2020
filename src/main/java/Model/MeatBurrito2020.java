@@ -5,18 +5,8 @@
  */
 package Model;
 
-import Config.AlgoConfig;
-import javafx.application.Application;
-import javafx.stage.Stage;
-import org.deeplearning4j.models.word2vec.Word2Vec;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-
-import java.util.Scanner;
 import View.Gui;
-import org.nd4j.linalg.api.ndarray.INDArray;
 import twitter4j.TwitterException;
-
-import java.util.Scanner;
 
 /**
  *
@@ -36,20 +26,17 @@ public class MeatBurrito2020{
         Gui gui = new Gui();
         gui.init(args);
 
+        /*
         try {
             TwitterResources.getTweets("", "");
         } catch (TwitterException e) {
             e.printStackTrace();
         }
+        */
 
-        Word2Vec_Thing test = new Word2Vec_Thing();
-        test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
-        test.Train(3);
-
-        while(true){
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println(test.getWordsNearest(keyboard.nextLine(),5));
         Processor proc = new Processor();
+        proc.test();
+
         String[] inputFiles = {"/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt"};
         double[][] vals = proc.relatedWords(inputFiles, 5, 1);
         /*
