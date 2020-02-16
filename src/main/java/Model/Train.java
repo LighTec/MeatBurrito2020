@@ -70,6 +70,7 @@ public class  Train {
                 outputArray = networkConfig.rnnTimeStep(testInputArray);
             }
             System.out.println( validWord[fistChar] + " " + output);
+            networkConfig.save(networkFile);
 
         }
 
