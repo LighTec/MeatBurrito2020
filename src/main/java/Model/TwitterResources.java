@@ -6,6 +6,6 @@ public class TwitterResources {
     }
 
     public static void getTweets(String source, String outputFile) {
-        Twitter twitter = TwitterFactory.getSingleton();
+      //  Twitter twitter = TwitterFactory.getSingleton();
     }
 }
