@@ -6,6 +6,7 @@
 package Model;
 
 import View.Gui;
+import twitter4j.TwitterException;
 
 import java.util.Scanner;
 
@@ -27,7 +28,11 @@ public class MeatBurrito2020{
         Gui gui = new Gui();
         gui.init(args);
 
-        TwitterResources.getTweets("", "");
+        try {
+            TwitterResources.getTweets("", "");
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
 
         Word2Vec_Thing test = new Word2Vec_Thing();
         test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
