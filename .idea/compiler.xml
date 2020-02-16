@@ -9,8 +9,8 @@
         <module name="MeatBurrito2020" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="MeatBurrito2020" target="1.5" />
+    <bytecodeTargetLevel target="13">
+      <module name="MeatBurrito2020" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
