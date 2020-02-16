@@ -17,7 +17,7 @@ public class  Train {
             INDArray inputLabels = Nd4j.zeros(1, validWord.length, perEpoch);//another oneD array that holds an offset version of the last to be used as output while training
             for (int j = 0 +(epoch * perEpoch) ; j < ((epoch + 1) * perEpoch) -1 ; j++) {
                 inputArray.putScalar(new int[]{0, sizedTFile[j], j}, 1);
-                inputLabels.putScalar(new int[]{0, sizedTFile[j+1], j}, 1)
+                inputLabels.putScalar(new int[]{0, sizedTFile[j+1], j}, 1);
             }
 
             DataSet dataSet = new DataSet(inputArray, inputLabels);
