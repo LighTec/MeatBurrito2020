@@ -95,7 +95,7 @@ public class Processor {
         }
     }
 
-    public String[] cipher(int index){
+    public String[] cipher({
         return (String[])this.vect.vocab().words().toArray();
     }
 }
