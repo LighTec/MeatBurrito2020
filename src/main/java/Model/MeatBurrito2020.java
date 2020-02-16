@@ -8,6 +8,8 @@ package Model;
 import Config.AlgoConfig;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
+import java.util.Scanner;
+
 /**
  *
  * @author kell
@@ -20,10 +22,21 @@ public class MeatBurrito2020 {
     public static void main(String[] args) {
 
 
-        MultiLayerNetwork net = new MultiLayerNetwork(AlgoConfig.get(new char[]{'a','b','c'}, 50));
-        net.init();//acctualy creats network
+        //MultiLayerNetwork net = new MultiLayerNetwork(AlgoConfig.get(new char[]{'a','b','c'}, 50));
+        //net.init();//acctualy creats network
 
-        System.out.println("end");
+        Word2Vec_Thing test = new Word2Vec_Thing();
+        test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/trumpsTweets.txt");
+        test.Train(3);
+
+        while(true){
+            Scanner keyboard = new Scanner(System.in);
+            System.out.println(test.getWordsNearest(keyboard.nextLine(),5));
+        }
+
+
+
+      //  System.out.println("end");
 
     }
 
