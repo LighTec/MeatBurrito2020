@@ -105,7 +105,13 @@ public class Processor {
     }
 
     public String[] cipher(){
-        return (String[])this.vect.vocab().words().toArray();
+        Collection<String> collec = this.vect.vocab().words();
+        String[] out = new String[collec.size()];
+        Iterator<String> iter = collec.iterator();
+        for(int i = 0; i < out.length; i++){
+            out[i] = iter.next();
+        }
+        return out;
     }
 
     public int[] getmapping(String[] inputfilepaths){
