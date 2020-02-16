@@ -34,35 +34,6 @@ public class Processor{
         return out;
     }
 
-    public void test(){
-        double val = 1 / (double)5;
-        this.vect = new Word2Vec_Thing();
-        this.vect.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
-        this.vect.Train(1);
-        int wordCount = (int)this.vect.vocabSize();
-        VocabCache<VocabWord> words = this.vect.vocab();
-        double[][] indices = new double[wordCount][wordCount];
-        int j;
-        Word2Vec temp = this.vect.returnModel();
-        for(int i = 0; i < wordCount; i++){
-            String word = words.wordAtIndex(i);
-            double[] vals = temp.getWordVector(word);
-            double sum = 0;
-            for(int k = 0; k < vals.length; k++){
-                if(vals[k] < 0){
-                    vals[k] = 0;
-                }
-                sum += vals[k];
-            }
-            double newsum = 0;
-            for(int k = 0; k < vals.length; k++){
-                vals[k] = vals[k] / sum;
-                newsum += vals[k];
-            }
-            indices[i] = vals;
-        }
-    }
-
     public double[][] relatedWords(String[] inputFiles, int trainCount){
         this.vect = new Word2Vec_Thing();
         this.vect.BuildModel(inputFiles[0]); // TODO allow multiple inputs
@@ -107,11 +78,9 @@ public class Processor{
 
     public String[] cipher(){
         System.out.println("Creating cipher...");
-        Collection<String> collec = this.vect.vocab().words();
-        String[] out = new String[collec.size()];
-        Iterator<String> iter = collec.iterator();
+        String[] out = new String[(int)this.vect.vocabSize()];
         for(int i = 0; i < out.length; i++){
-            out[i] = iter.next();
+            out[i] = this.vect.vocab().wordAtIndex(i);
         }
         System.out.println("Cipher created.");
         return out;
@@ -137,7 +106,8 @@ public class Processor{
             }
             System.out.println("File " + (i+1) + " out of " + inputfilepaths.length + " mapped.");
         }
-        return jaggedMatrixToArray(rawmappings);
+        int[] flattened = jaggedMatrixToArray(rawmappings);
+        return clearNegatives(flattened);
     }
 
     public int[] jaggedMatrixToArray(int[][] matrix){
@@ -157,6 +127,28 @@ public class Processor{
             }
         }
         System.out.println("Mappings generated.");
+        return out;
+    }
+
+    public int[] clearNegatives(int[] input){
+        int count = 0;
+        for(int i = 0; i < input.length; i++){
+            if(input[i] < 1){
+                count++;
+            }
+        }
+        int[] out = new int[input.length - count];
+        int offset = 0;
+        for(int i = 0; i < out.length; i++){
+            while(true){
+                if(input[i+offset] >= 0){
+                    out[i] = input[i+offset];
+                    break;
+                }else{
+                    offset++;
+                }
+            }
+        }
         return out;
     }
 }
