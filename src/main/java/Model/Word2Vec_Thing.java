@@ -1,5 +1,6 @@
 package Model;
 
+import org.deeplearning4j.models.embeddings.learning.impl.elements.CBOW;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.LineSentenceIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
@@ -35,9 +36,10 @@ public class Word2Vec_Thing {
 
         this.thesaurus = new Word2Vec.Builder()
                 .minWordFrequency(5)
-                .layerSize(1000)
+                .layerSize(500)
                 .seed(42)
                 .windowSize(5)
+                .elementsLearningAlgorithm(new CBOW<>())
                 .iterate(iter)
                 .tokenizerFactory(t)
                 .build();
