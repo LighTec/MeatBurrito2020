@@ -9,6 +9,7 @@ import View.Gui;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -44,10 +45,14 @@ public class MeatBurrito2020{
         String[] inputFiles = {in1.getAbsolutePath()};
         double[][] vals = proc.relatedWords(inputFiles, 5, 1);
 
-        MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 50));
+        MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 25));
         net.init();//actually creates network
         File networkSave = new File("src/main/java/Data/newTweets.txt");
-        //Train.train(net,networkSave,50, int[] sizedTFile, String[] validWord,vals);
+        try {
+            networkSave = Train.train(net,networkSave,50, proc.getmapping(inputFiles), proc.cipher(),vals);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         /*
         for(int i = 0; i < vals.length; i++){

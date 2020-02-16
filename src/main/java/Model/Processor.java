@@ -73,6 +73,7 @@ public class Processor{
         double[][] indices = new double[wordCount][wordCount];
         int j;
         Word2Vec temp = this.vect.returnModel();
+        System.out.println("Normalizing vectors...");
         for(int i = 0; i < wordCount; i++){
             String word = words.wordAtIndex(i);
             double[] vals = temp.getWordVector(word);
@@ -90,6 +91,7 @@ public class Processor{
             }
             indices[i] = vals;
         }
+        System.out.println("vectors normalized.");
         return indices;
     }
 
@@ -105,10 +107,19 @@ public class Processor{
     }
 
     public String[] cipher(){
-        return (String[])this.vect.vocab().words().toArray();
+        System.out.println("Creating cipher...");
+        Collection<String> collec = this.vect.vocab().words();
+        String[] out = new String[collec.size()];
+        Iterator<String> iter = collec.iterator();
+        for(int i = 0; i < out.length; i++){
+            out[i] = iter.next();
+        }
+        System.out.println("Cipher created.");
+        return out;
     }
 
     public int[] getmapping(String[] inputfilepaths){
+        System.out.println("Generating mappings...");
         int[][] rawmappings = new int[inputfilepaths.length][];
         for(int i = 0; i < inputfilepaths.length; i++){
             File fl = new File(inputfilepaths[i]);
@@ -125,12 +136,13 @@ public class Processor{
                 e.printStackTrace();
                 break;
             }
-
+            System.out.println("File " + (i+1) + " out of " + inputfilepaths.length + " mapped.");
         }
         return jaggedMatrixToArray(rawmappings);
     }
 
     public int[] jaggedMatrixToArray(int[][] matrix){
+        System.out.println("Flattening mappings...");
         int tot = 0;
         for(int i = 0; i < matrix.length; i++){
             tot += matrix[i].length;
@@ -145,6 +157,7 @@ public class Processor{
                 out[index+j] = matrix[i][j];
             }
         }
+        System.out.println("Mappings generated.");
         return out;
     }
 }
