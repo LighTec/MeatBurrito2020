@@ -12,10 +12,10 @@ public abstract class TwitterResources {
 
     public static void postTweet(String tweet) throws TwitterException {
         ConfigurationBuilder config = new ConfigurationBuilder();
-        config.setOAuthConsumerKey();
-        config.setOAuthConsumerSecret();
-        config.setOAuthAccessToken();
-        config.setOAuthAccessTokenSecret();
+        config.setOAuthConsumerKey("f90kEE6UrOarG4aUR8yynbLff");
+        config.setOAuthConsumerSecret("Cd98LwoyKO1ZS3vHw7cH2SQCMUW3bsSkpTgpST1ZS0i0iu3PBU");
+        config.setOAuthAccessToken("897951635745325056-YNa3BM9zV1Jxsk8Vyo8b9dRyIjBDN6S");
+        config.setOAuthAccessTokenSecret("3ZKVJhmJapU8X2zWOkytL8nPLP4iP2fw5kZPV6uNoee6D");
 
         TwitterFactor factory = new TwitterFactory(config.build());
         Twitter twitter = factory.getInstance();
