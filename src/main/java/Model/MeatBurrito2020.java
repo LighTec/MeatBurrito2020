@@ -15,6 +15,8 @@ import java.util.Scanner;
 import View.Gui;
 import org.nd4j.linalg.api.ndarray.INDArray;
 
+import java.util.Scanner;
+
 /**
  *
  * @author kell
