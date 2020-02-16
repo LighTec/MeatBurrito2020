@@ -17,7 +17,7 @@ public abstract class TwitterResources {
         config.setOAuthAccessToken("897951635745325056-YNa3BM9zV1Jxsk8Vyo8b9dRyIjBDN6S");
         config.setOAuthAccessTokenSecret("3ZKVJhmJapU8X2zWOkytL8nPLP4iP2fw5kZPV6uNoee6D");
 
-        TwitterFactor factory = new TwitterFactory(config.build());
+        TwitterFactory factory = new TwitterFactory(config.build());
         Twitter twitter = factory.getInstance();
         twitter.updateStatus(tweet);
     }
