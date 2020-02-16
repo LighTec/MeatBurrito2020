@@ -35,14 +35,16 @@ public class Word2Vec_Thing {
 
         this.thesaurus = new Word2Vec.Builder()
                 .minWordFrequency(5)
-                .layerSize(500)
+                .layerSize(1000)
                 .seed(42)
-                .windowSize(3)
+                .windowSize(5)
                 .iterate(iter)
                 .tokenizerFactory(t)
                 .build();
 
         System.out.println("Word2Vec created.");
+
+
     }
 
     public void Train(int count){
