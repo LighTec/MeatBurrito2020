@@ -11,19 +11,18 @@ import java.util.Scanner;
 public abstract class TwitterResources {
     public static void getAnalysisTweets(String source, String outputFile) throws TwitterException, IOException {
         ConfigurationBuilder config = new ConfigurationBuilder();
-        config.setOAuthConsumerKey("QuvBfIZwJsofhtXJHrVWSxRDm");
-        config.setOAuthConsumerSecret("9Up6gzBDBupue3MYYBr0Ex0KZ6dqPQ28rQ2RDUJSg2LGchrJiU");
-        config.setOAuthAccessToken("1228793132285739008-WpVQihekNNTut7FgWOzVWcaPMxWE2w");
-        config.setOAuthAccessTokenSecret("AIUQLTGeSPmGBKvESWkrUU7bHH7Q84Bk1XjM4WPsv93m2");
-
-        System.out.println(source + '\n' + outputFile + '\n');
+        config.setOAuthConsumerKey("MNxOKZ379XgXBOEZxaiL40mlU");
+        config.setOAuthConsumerSecret("6Y4TJ6i7Z7RD157Sgfxw2UTVPdljAigA5rSYfqo5cVO33MxF21");
+        config.setOAuthAccessToken("1228793132285739008-FSvtjI42wgqwwscqz6KCJdmMuc6i6w");
+        config.setOAuthAccessTokenSecret("VRzHgrlx9EUg07PFt8V6CS87iKSuiJWtyGh6baTubsZhk");
 
         TwitterFactory factory = new TwitterFactory(config.build());
         Twitter twitter = factory.getInstance();
 
         FileWriter output = new FileWriter(outputFile);
-
-        QueryResult tweets = twitter.search(new Query("from:" + source));
+        Query search = new Query("from:" + source);
+        search.count(100);
+        QueryResult tweets = twitter.search(search);
         for(int i = 0; i < tweets.getTweets().size(); i++) {
             output.append(tweets.getTweets().get(i).getText().replace('\n', ' '));
             if(i != tweets.getTweets().size() - 1)
