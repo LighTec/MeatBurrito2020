@@ -48,7 +48,7 @@ public class MeatBurrito2020{
         net.init();//actually creates network
         File networkSave = new File("src/main/java/Data/newTweets.txt");
         try {
-            networkSave = Train.train(net,networkSave,50000, proc.getmapping(inputFiles), proc.cipher(),vals);
+            networkSave = Train.train(net,networkSave,1000, proc.getmapping(inputFiles), proc.cipher(),vals);
         } catch (IOException e) {
             e.printStackTrace();
         }
