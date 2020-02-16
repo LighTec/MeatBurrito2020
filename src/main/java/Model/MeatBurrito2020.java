@@ -6,10 +6,9 @@
 package Model;
 
 import View.Gui;
-import twitter4j.TwitterException;
+import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.File;
 
 /**
  *
@@ -29,18 +28,39 @@ public class MeatBurrito2020{
         Gui gui = new Gui();
         gui.init(args);
 
-        Word2Vec_Thing test = new Word2Vec_Thing();
-        test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
-        test.Train(3);
-
-        while(true){
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println(test.getWordsNearest(keyboard.nextLine(),5));
+        /*
+        try {
+            TwitterResources.getTweets("", "");
+        } catch (TwitterException e) {
+            e.printStackTrace();
         }
+        */
+        Processor proc = new Processor();
 
+        //proc.test();
 
+        File in1 = new File("src/main/java/Data/newTweets.txt");
 
-      //  System.out.println("end");
+        String[] inputFiles = {in1.getAbsolutePath()};
+        double[][] vals = proc.relatedWords(inputFiles, 5, 1);
+
+        MultiLayerNetwork net = new MultiLayerNetwork(Config.AlgoConfig.get(proc.cipher(), 50));
+        net.init();//actually creates network
+        File networkSave = new File("src/main/java/Data/newTweets.txt");
+        //Train.train(net,networkSave,50, int[] sizedTFile, String[] validWord,vals);
+
+        /*
+        for(int i = 0; i < vals.length; i++){
+            for(int j = 0; j < vals.length; j++){
+                if(vals[i][j] > 0.1){
+                    System.out.println("1/5 for line " + i + " is at column " + j);
+                }
+            }
+        }
+        */
+        //proc.printBestWords();
+
+      System.out.println("end");
 
     }
 }
