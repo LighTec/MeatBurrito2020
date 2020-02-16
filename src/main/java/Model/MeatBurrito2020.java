@@ -8,10 +8,12 @@ package Model;
 import Config.AlgoConfig;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
 import java.util.Scanner;
 import View.Gui;
+import org.nd4j.linalg.api.ndarray.INDArray;
 
 /**
  *
@@ -33,7 +35,13 @@ public class MeatBurrito2020{
 
         Word2Vec_Thing test = new Word2Vec_Thing();
         test.BuildModel("/home/kell/IdeaProjects/MeatBurrito2020/src/main/java/Data/newTweets.txt");
-        test.Train(3);
+        test.Train(1);
+
+        Word2Vec temp = test.returnModel();
+        INDArray out = temp.getWordVectorMatrixNormalized("repulbican");
+
+        System.out.println(out);
+
 
         while(true){
             Scanner keyboard = new Scanner(System.in);

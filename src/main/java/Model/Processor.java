@@ -16,7 +16,9 @@ public class Processor {
         return out;
     }
 
-    public String[] relatedWords(String word){
+    public double[][] relatedWords(String[] inputFiles){
+
+
         return null;
     }
 }

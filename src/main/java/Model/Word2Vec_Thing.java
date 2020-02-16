@@ -8,6 +8,7 @@ import org.deeplearning4j.text.sentenceiterator.SentencePreProcessor;
 import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreprocessor;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
+import org.nd4j.linalg.api.ndarray.INDArray;
 
 import java.io.File;
 import java.util.Collection;
@@ -39,13 +40,11 @@ public class Word2Vec_Thing {
                 .layerSize(500)
                 .seed(42)
                 .windowSize(5)
-                .elementsLearningAlgorithm(new CBOW<>())
                 .iterate(iter)
                 .tokenizerFactory(t)
                 .build();
 
         System.out.println("Word2Vec created.");
-
 
     }
 
@@ -61,7 +60,7 @@ public class Word2Vec_Thing {
         return this.thesaurus.wordsNearest(in,count);
     }
 
-//    public Word2Vec returnModel(){
-//
-//    }
+    public Word2Vec returnModel(){
+    return this.thesaurus;
+    }
 }
