@@ -25,7 +25,7 @@ public class Word2Vec_Thing {
         SentenceIterator iter = new LineSentenceIterator(new File(filepath));
         iter.setPreProcessor(new SentencePreProcessor() {
             public String preProcess(String sentence) {
-                return sentence.replaceAll("[^a-zA-Z ]", "").toLowerCase();
+                return sentence.replaceAll("[^a-zA-Z. ]", "").toLowerCase();
             }
         });
 
@@ -35,14 +35,16 @@ public class Word2Vec_Thing {
 
         this.thesaurus = new Word2Vec.Builder()
                 .minWordFrequency(5)
-                .layerSize(100)
+                .layerSize(500)
                 .seed(42)
-                .windowSize(5)
+                .windowSize(3)
                 .iterate(iter)
                 .tokenizerFactory(t)
                 .build();
 
         System.out.println("Word2Vec created.");
+
+
     }
 
     public void Train(int count){
